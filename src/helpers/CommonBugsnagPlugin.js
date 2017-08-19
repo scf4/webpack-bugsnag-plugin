@@ -37,23 +37,15 @@ class CommonBugsnagPlugin {
       path: compilation.compiler.options.context,
     };
     return Promise.all([
-      getCurrentBranch(options),
-      getLatestCommitHash(options),
-      getOriginRemoteUrl(options),
       getPackageVersion(options),
       getPackageRepository(options),
     ]).then(([
-      currentBranch,
-      latestCommitHash,
-      originRemoteUrl,
       packageVersion,
       packageRepository,
     ]) => {
       return {
         version: packageVersion,
-        branch: currentBranch,
-        repository: packageRepository || originRemoteUrl,
-        revision: latestCommitHash,
+        repository: packageRepository,
       };
     });
   }
