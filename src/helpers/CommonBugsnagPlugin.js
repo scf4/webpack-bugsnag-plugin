@@ -37,15 +37,10 @@ class CommonBugsnagPlugin {
       path: compilation.compiler.options.context,
     };
     return Promise.all([
-      getPackageVersion(options),
-      getPackageRepository(options),
     ]).then(([
-      packageVersion,
-      packageRepository,
     ]) => {
       return {
-        version: packageVersion,
-        repository: packageRepository,
+        version: 1,
       };
     });
   }
